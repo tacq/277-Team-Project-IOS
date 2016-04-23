@@ -13,6 +13,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchHistoryTable: UITableView!
     var searchHistory = [String]()
+    TexttoSpeach
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //txtFieldChanged
+        //txtFieldChanged
     @IBAction func clickSearchField(sender: AnyObject) {
         let history = NSUserDefaults.standardUserDefaults().objectForKey("history")as? [String] ?? [String]()
         if(history.isEmpty == false){
@@ -39,7 +39,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             searchHistoryTable.hidden = true
         }
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let history = NSUserDefaults.standardUserDefaults().objectForKey("history")as? [String] ?? [String]()
+        searchTxt.text=history[indexPath.row]
+    }
     
+   
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let history = NSUserDefaults.standardUserDefaults().objectForKey("history")as? [String] ?? [String]()
         if(history.isEmpty == false){
@@ -84,6 +89,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             NSUserDefaults.standardUserDefaults().synchronize()
             searchHistory.removeAll()
         }
+        searchHistoryTable.hidden = true
        
     }
 

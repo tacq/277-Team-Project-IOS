@@ -13,7 +13,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchHistoryTable: UITableView!
     var searchHistory = [String]()
-    TexttoSpeach
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,6 +13,7 @@
 		133C09B71CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 133C09B51CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld */; };
 		133C09B91CC92B2700E4D06B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133C09B81CC92B2700E4D06B /* Assets.xcassets */; };
 		133C09BC1CC92B2700E4D06B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133C09BA1CC92B2700E4D06B /* LaunchScreen.storyboard */; };
+		9BF510491CCD592700EB48A8 /* PropertyTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		133C09B81CC92B2700E4D06B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		133C09BB1CC92B2700E4D06B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		133C09BD1CC92B2700E4D06B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyTypePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				133C09BA1CC92B2700E4D06B /* LaunchScreen.storyboard */,
 				133C09BD1CC92B2700E4D06B /* Info.plist */,
 				133C09B51CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld */,
+				9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */,
 			);
 			path = "Team-IOS-Client";
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				133C09B71CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld in Sources */,
+				9BF510491CCD592700EB48A8 /* PropertyTypePickerViewController.swift in Sources */,
 				133C09B11CC92B2700E4D06B /* ViewController.swift in Sources */,
 				133C09AF1CC92B2700E4D06B /* AppDelegate.swift in Sources */,
 			);
@@ -290,6 +294,7 @@
 				133C09C21CC92B2700E4D06B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -12,20 +12,36 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBOutlet weak var searchTxt: UITextField!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchHistoryTable: UITableView!
+    @IBOutlet weak var propertyBtn: UIButton!
     var searchHistory = [String]()
-
+    var viaPropertyType = "Select Property Type"
+    var viaSearchTxt=""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view Controller")
+        print(viaSearchTxt)
         self.searchHistoryTable.hidden = true
         self.searchHistoryTable.delegate = self
         self.searchHistoryTable.dataSource = self
         self.searchHistoryTable.registerClass(UITableViewCell.self,
                                      forCellReuseIdentifier: "historyTable")
+        self.propertyBtn.backgroundColor = UIColor.clearColor()
+        self.propertyBtn.layer.cornerRadius = 5
+        self.propertyBtn.layer.borderWidth = 1
+        self.propertyBtn.layer.borderColor = UIColor.blackColor().CGColor
+        self.propertyBtn.setTitle(viaPropertyType, forState: .Normal)
+        self.searchTxt.text = viaSearchTxt
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
         //txtFieldChanged
     @IBAction func clickSearchField(sender: AnyObject) {
@@ -37,10 +53,17 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }else{
             searchHistoryTable.hidden = true
         }
+        viaSearchTxt = self.searchTxt.text!
+        print(viaSearchTxt)
+    }
+    @IBAction func editingEnd(sender: AnyObject) {
+         searchHistoryTable.hidden = true
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let history = NSUserDefaults.standardUserDefaults().objectForKey("history")as? [String] ?? [String]()
-        searchTxt.text=history[indexPath.row]
+        viaSearchTxt = history[indexPath.row]
+        searchTxt.text=viaSearchTxt
+        searchHistoryTable.hidden = true
     }
     
    

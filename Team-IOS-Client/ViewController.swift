@@ -11,16 +11,22 @@ import UIKit
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var searchTxt: UITextField!
     @IBOutlet weak var searchBtn: UIButton!
+    
+    @IBOutlet weak var locationTxt: UITextField!
+    @IBOutlet weak var locationBtn: UIButton!
+    
     @IBOutlet weak var searchHistoryTable: UITableView!
     @IBOutlet weak var propertyBtn: UIButton!
     var searchHistory = [String]()
     var viaPropertyType = "Select Property Type"
     var viaSearchTxt=""
+    var viaLocationTxt=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view Controller")
         print(viaSearchTxt)
+        
         self.searchHistoryTable.hidden = true
         self.searchHistoryTable.delegate = self
         self.searchHistoryTable.dataSource = self
@@ -31,7 +37,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.propertyBtn.layer.borderWidth = 1
         self.propertyBtn.layer.borderColor = UIColor.blackColor().CGColor
         self.propertyBtn.setTitle(viaPropertyType, forState: .Normal)
-        self.searchTxt.text = viaSearchTxt
+        
+        
+        self.searchTxt.backgroundColor = UIColor.clearColor()
+        self.searchTxt.layer.cornerRadius = 5
+        self.searchTxt.layer.borderWidth = 1
+        self.searchTxt.layer.borderColor = UIColor.blackColor().CGColor
+        
+        
+        self.locationTxt.backgroundColor = UIColor.clearColor()
+        self.locationTxt.layer.cornerRadius = 5
+        self.locationTxt.layer.borderWidth = 1
+        self.locationTxt.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.locationBtn.backgroundColor = UIColor.clearColor()
+        self.locationBtn.layer.cornerRadius = 5
+        
+        self.locationTxt.text = viaLocationTxt
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }

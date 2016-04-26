@@ -11,8 +11,9 @@
 		133C09B11CC92B2700E4D06B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133C09B01CC92B2700E4D06B /* ViewController.swift */; };
 		133C09B41CC92B2700E4D06B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133C09B21CC92B2700E4D06B /* Main.storyboard */; };
 		133C09B71CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 133C09B51CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld */; };
-		133C09B91CC92B2700E4D06B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133C09B81CC92B2700E4D06B /* Assets.xcassets */; };
 		133C09BC1CC92B2700E4D06B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133C09BA1CC92B2700E4D06B /* LaunchScreen.storyboard */; };
+		9B2C355F1CCDCA8A00DF4E14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C355E1CCDCA8A00DF4E14 /* MapViewController.swift */; };
+		9BEEF2EA1CCF1F4800678851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEEF2E91CCF1F4800678851 /* Assets.xcassets */; };
 		9BF510491CCD592700EB48A8 /* PropertyTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,9 +23,10 @@
 		133C09B01CC92B2700E4D06B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		133C09B31CC92B2700E4D06B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		133C09B61CC92B2700E4D06B /* Team_IOS_Client.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Team_IOS_Client.xcdatamodel; sourceTree = "<group>"; };
-		133C09B81CC92B2700E4D06B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		133C09BB1CC92B2700E4D06B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		133C09BD1CC92B2700E4D06B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B2C355E1CCDCA8A00DF4E14 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9BEEF2E91CCF1F4800678851 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyTypePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,11 +63,12 @@
 				133C09AE1CC92B2700E4D06B /* AppDelegate.swift */,
 				133C09B01CC92B2700E4D06B /* ViewController.swift */,
 				133C09B21CC92B2700E4D06B /* Main.storyboard */,
-				133C09B81CC92B2700E4D06B /* Assets.xcassets */,
 				133C09BA1CC92B2700E4D06B /* LaunchScreen.storyboard */,
+				9BEEF2E91CCF1F4800678851 /* Assets.xcassets */,
 				133C09BD1CC92B2700E4D06B /* Info.plist */,
 				133C09B51CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld */,
 				9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */,
+				9B2C355E1CCDCA8A00DF4E14 /* MapViewController.swift */,
 			);
 			path = "Team-IOS-Client";
 			sourceTree = "<group>";
@@ -129,7 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				133C09BC1CC92B2700E4D06B /* LaunchScreen.storyboard in Resources */,
-				133C09B91CC92B2700E4D06B /* Assets.xcassets in Resources */,
+				9BEEF2EA1CCF1F4800678851 /* Assets.xcassets in Resources */,
 				133C09B41CC92B2700E4D06B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +147,7 @@
 				133C09B71CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld in Sources */,
 				9BF510491CCD592700EB48A8 /* PropertyTypePickerViewController.swift in Sources */,
 				133C09B11CC92B2700E4D06B /* ViewController.swift in Sources */,
+				9B2C355F1CCDCA8A00DF4E14 /* MapViewController.swift in Sources */,
 				133C09AF1CC92B2700E4D06B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

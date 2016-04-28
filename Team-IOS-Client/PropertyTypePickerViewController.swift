@@ -29,11 +29,10 @@ class PropertyTypePickerViewController: UIViewController,UIPickerViewDataSource,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         print("prepare")
         if (segue.identifier == "confirmPropertyType") {
-             print(1)
             if let destination = segue.destinationViewController as? ViewController {
-                 print(2)
                 destination.viaPropertyType = selectedProperty
             }
+            self.tabBarController?.tabBar.hidden = true
         }
     }
 

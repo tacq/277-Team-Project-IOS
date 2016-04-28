@@ -11,25 +11,35 @@ import UIKit
 class SearchResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var resultTable: UITableView!
     var arrayOfResult: [Result] = [Result]()
+    let cellSpacingHeight: CGFloat = 15
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpResults()
+        self.resultTable.backgroundView = UIImageView(image: UIImage(named: "background_img"))
+        self.resultTable.tableFooterView = UIView()
+      
+
     }
+
+    
+    //set cell number
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfResult.count
     }
+    
+    //set cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchResultCell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! SearchResultCell
         
-       //even row is blue color, odd row is gree color
-        if indexPath.row % 2 == 0{
-            cell.backgroundColor = UIColor.yellowColor()
-        }
-        else{
-            cell.backgroundColor = UIColor.greenColor()
-        }
+//       //even row is blue color, odd row is gree color
+//        if indexPath.row % 2 == 0{
+//            cell.backgroundColor = UIColor.yellowColor()
+//        }
+//        else{
+//            cell.backgroundColor = UIColor.greenColor()
+//        }
         
         let result = arrayOfResult[indexPath.row]
         cell.setCell(result.address, property: result.property, rooms: result.rooms, price: result.price, img: result.img)

@@ -32,28 +32,29 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.searchHistoryTable.dataSource = self
         self.searchHistoryTable.registerClass(UITableViewCell.self,
                                      forCellReuseIdentifier: "historyTable")
-        self.propertyBtn.backgroundColor = UIColor.clearColor()
+        
+        
         self.propertyBtn.layer.cornerRadius = 5
         self.propertyBtn.layer.borderWidth = 1
         self.propertyBtn.layer.borderColor = UIColor.blackColor().CGColor
         self.propertyBtn.setTitle(viaPropertyType, forState: .Normal)
         
-        
-        self.searchTxt.backgroundColor = UIColor.clearColor()
         self.searchTxt.layer.cornerRadius = 5
         self.searchTxt.layer.borderWidth = 1
-        self.searchTxt.layer.borderColor = UIColor.blackColor().CGColor
+        self.searchTxt.layer.borderColor = UIColor(red: 0.0/255, green: 127.0/255, blue: 248.0/255, alpha: 1.0).CGColor
         
-        
-        self.locationTxt.backgroundColor = UIColor.clearColor()
         self.locationTxt.layer.cornerRadius = 5
         self.locationTxt.layer.borderWidth = 1
-        self.locationTxt.layer.borderColor = UIColor.blackColor().CGColor
+        self.locationTxt.layer.borderColor = UIColor(red: 0.0/255, green: 127.0/255, blue: 248.0/255, alpha: 1.0).CGColor
         
-        self.locationBtn.backgroundColor = UIColor.clearColor()
+        self.searchBtn.layer.cornerRadius = 5
+        self.searchBtn.layer.borderWidth = 1
+        self.searchBtn.layer.borderColor = UIColor(red: 0.0/255, green: 127.0/255, blue: 248.0/255, alpha: 1.0).CGColor
+        
         self.locationBtn.layer.cornerRadius = 5
         
         self.locationTxt.text = viaLocationTxt
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }

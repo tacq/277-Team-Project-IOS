@@ -66,6 +66,8 @@
 		133C09AD1CC92B2700E4D06B /* Team-IOS-Client */ = {
 			isa = PBXGroup;
 			children = (
+				9BD30EDB1CD1B389007F26C4 /* MapView */,
+				9BC42B041CD0396200EA0C94 /* SearchResult */,
 				133C09AE1CC92B2700E4D06B /* AppDelegate.swift */,
 				133C09B01CC92B2700E4D06B /* ViewController.swift */,
 				133C09B21CC92B2700E4D06B /* Main.storyboard */,
@@ -74,12 +76,26 @@
 				133C09BD1CC92B2700E4D06B /* Info.plist */,
 				133C09B51CC92B2700E4D06B /* Team_IOS_Client.xcdatamodeld */,
 				9BF510481CCD592700EB48A8 /* PropertyTypePickerViewController.swift */,
-				9B2C355E1CCDCA8A00DF4E14 /* MapViewController.swift */,
+			);
+			path = "Team-IOS-Client";
+			sourceTree = "<group>";
+		};
+		9BC42B041CD0396200EA0C94 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
 				9BEEF2ED1CCF24BC00678851 /* SearchResultViewController.swift */,
 				9BEEF2EF1CCF28BE00678851 /* SearchResultCell.swift */,
 				9BEEF2F11CCF2ACC00678851 /* SearchResult.swift */,
 			);
-			path = "Team-IOS-Client";
+			name = SearchResult;
+			sourceTree = "<group>";
+		};
+		9BD30EDB1CD1B389007F26C4 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				9B2C355E1CCDCA8A00DF4E14 /* MapViewController.swift */,
+			);
+			name = MapView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

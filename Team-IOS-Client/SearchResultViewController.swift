@@ -7,22 +7,40 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var resultTable: UITableView!
     var arrayOfResult: [Result] = [Result]()
     let cellSpacingHeight: CGFloat = 15
+    var searchTxt=""
+    var locationTxt=""
+    var propertyType=""
+    var searchResult:NSArray = []
+    var detailedResult:NSDictionary=[:]
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpResults()
+    
+        // Send HTTP POST Request
+        Alamofire.request(.POST, "http://localhost:8888/search", parameters: ["searchTxt": searchTxt,"locationTxt":locationTxt,"propertyType":propertyType])
+            .responseJSON { response in switch response.result {
+            case .Success(let JSON):
+    
+                let response = JSON as! NSDictionary
+                self.searchResult = response["value"] as! NSArray
+                self.setUpResults()
+                self.resultTable.reloadData()
+                
+            case .Failure(let error):
+                print("Request failed with error: \(error)")
+                }
+        }
+        
         self.resultTable.backgroundView = UIImageView(image: UIImage(named: "background_img"))
         self.resultTable.tableFooterView = UIView()
-      
-
     }
-
+    
     
     //set cell number
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,27 +50,32 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, UITab
     //set cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchResultCell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! SearchResultCell
-        
-//       //even row is blue color, odd row is gree color
-//        if indexPath.row % 2 == 0{
-//            cell.backgroundColor = UIColor.yellowColor()
-//        }
-//        else{
-//            cell.backgroundColor = UIColor.greenColor()
-//        }
-        
         let result = arrayOfResult[indexPath.row]
         cell.setCell(result.address, property: result.property, rooms: result.rooms, price: result.price, img: result.img)
         
         return cell
     }
-    
-    func setUpResults(){
-        let result1 = Result(address: "39370 Civic Center Dr, Fremont CA 94538", property: "Apartment", rooms: 2, price: 2358.06, img: "")
-        let result2 = Result(address: "40640 High St, Fremont Ca 94538", property: "Condo", rooms: 3, price: 1800.08, img: "")
-        arrayOfResult.append(result1)
-        arrayOfResult.append(result2)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        detailedResult = searchResult[indexPath.row] as! NSDictionary
+        performSegueWithIdentifier("detailedResultSegue", sender: self)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detailedResultSegue" {
+            if let destination = segue.destinationViewController as? DetailedResultViewController {
+                destination.detailedResult = detailedResult
+            }
 
+        }
+    }
+    func setUpResults(){
+        let dataArray = searchResult
+        for value in dataArray as![[String:String]]{
+            let address = value["street"]!+", "+value["city"]!+" "+value["state"]!+" "+value["zipcode"]!
+            let result = Result(address: address, property: value["property"]!, rooms: Int(value["rooms"]!)!, price: Double(value["price"]!)!, img: "")
+            arrayOfResult.append(result)
+        }
+    }
+    
+    
 }

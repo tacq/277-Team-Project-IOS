@@ -11,7 +11,7 @@ import UIKit
 class PropertyTypePickerViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate{
 
     @IBOutlet weak var propertyPicker: UIPickerView!
-    let propertyTypes = ["House","Townhouse","Condo", "Apartment", "Loft"]
+    let propertyTypes = ["house","townhouse","condo", "apartment", "loft"]
     var selectedProperty = ""
     @IBOutlet weak var confirmBtn: UIButton!
     override func viewDidLoad() {
@@ -19,30 +19,33 @@ class PropertyTypePickerViewController: UIViewController,UIPickerViewDataSource,
         propertyPicker.dataSource = self
         propertyPicker.delegate = self
         confirmBtn.addTarget(self, action: "confirmSelect", forControlEvents: .TouchUpInside)
-
-        // Do any additional setup after loading the view.
+               // Do any additional setup after loading the view.
     }
 
     func confirmSelect() {
-        self.performSegueWithIdentifier("confirmPropertyType", sender: self)
+        NSUserDefaults.standardUserDefaults().setObject(selectedProperty, forKey: "selectedProperty")
+        NSUserDefaults.standardUserDefaults().synchronize()
+       self.performSegueWithIdentifier("confirmPropertyType", sender: self)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        print("prepare")
-        if (segue.identifier == "confirmPropertyType") {
-            if let destination = segue.destinationViewController as? ViewController {
-                destination.viaPropertyType = selectedProperty
-            }
-            self.tabBarController?.tabBar.hidden = true
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        print("prepare")
+//        if (segue.identifier == "confirmPropertyType") {
+//            if let destination = segue.destinationViewController as? ViewController {
+//                destination.viaPropertyType = selectedProperty
+//            }
+//            self.tabBarController?.tabBar.hidden = true
+//        }
+//    }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return propertyTypes[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      
         selectedProperty = propertyTypes[row]
+        
+
+        
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

@@ -11,6 +11,7 @@ import Alamofire
 
 class DetailedResultViewController: UIViewController, UIScrollViewDelegate {
     var detailedResult:NSDictionary=[:]
+    var favorited:Int = 0
     
     @IBOutlet weak var scrollImage: UIScrollView!
     @IBOutlet weak var address: UILabel!
@@ -33,8 +34,6 @@ class DetailedResultViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(detailedResult)
-        
         let tmp_street = detailedResult["street"] as! String
         let tmp_city = detailedResult["city"]as! String
         let tmp_state = detailedResult["state"]as! String
@@ -48,6 +47,10 @@ class DetailedResultViewController: UIViewController, UIScrollViewDelegate {
         phone.text = detailedResult["phone"] as? String
         email.text = detailedResult["email"] as? String
         
+        //
+        if(favorited == 1){
+            self.favorite.setImage(UIImage(named: "favorite"), forState: UIControlState.Normal)
+        }
         //
         configurePageControl()
         
@@ -70,13 +73,22 @@ class DetailedResultViewController: UIViewController, UIScrollViewDelegate {
     }
     @IBAction func saveFavorite(sender: AnyObject) {
         // Send HTTP POST Request
-        Alamofire.request(.POST, "http://localhost:8888/favorite", parameters: ["id":detailedResult["id"]!,"username": "hollandlinus@gmail.com"])
+        Alamofire.request(.POST, "http://localhost:8888/favorite", parameters: ["id":detailedResult["id"]!,"username": "hollandlinus@gmail.com","favorited":favorited])
             .responseJSON { response in switch response.result {
             case .Success(let JSON):
                 let response = JSON as! NSDictionary
-                print(response)
-                if ((response["code"]?.isEqual("Success") ) != nil){
-                self.favorite.setImage(UIImage(named: "favorite"), forState: UIControlState.Normal)
+                if ((response["code"]?.isEqual("Success") ) != nil && response["favorite"]as! String == "1"){
+                    print(self.favorited);
+                    print(response)
+                    self.favorite.setImage(UIImage(named: "favorite"), forState: UIControlState.Normal)
+                    self.favorited = 1
+                    print(self.favorited);
+                }else if ((response["code"]?.isEqual("Success") ) != nil && response["favorite"]as! String == "0"){
+                    print(self.favorited);
+                    print(response)
+                    self.favorite.setImage(UIImage(named: "favorite-default"), forState: UIControlState.Normal)
+                    self.favorited = 0
+                    print(self.favorited);
                 }
                 
             case .Failure(let error):

@@ -18,7 +18,7 @@ class PropertyTypePickerViewController: UIViewController,UIPickerViewDataSource,
         super.viewDidLoad()
         propertyPicker.dataSource = self
         propertyPicker.delegate = self
-        confirmBtn.addTarget(self, action: "confirmSelect", forControlEvents: .TouchUpInside)
+        confirmBtn.addTarget(self, action: #selector(PropertyTypePickerViewController.confirmSelect), forControlEvents: .TouchUpInside)
                // Do any additional setup after loading the view.
     }
 

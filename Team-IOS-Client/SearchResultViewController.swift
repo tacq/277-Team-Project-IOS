@@ -17,18 +17,19 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, UITab
     var locationTxt=""
     var propertyType=""
     var searchResult:NSArray = []
+    var favoriteResult:NSArray = []
     var detailedResult:NSDictionary=[:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Send HTTP POST Request
-        Alamofire.request(.POST, "http://localhost:8888/search", parameters: ["searchTxt": searchTxt,"locationTxt":locationTxt,"propertyType":propertyType])
+        Alamofire.request(.POST, "http://localhost:8888/search", parameters: ["username":"hollandlinus@gmail.com","searchTxt": searchTxt,"locationTxt":locationTxt,"propertyType":propertyType])
             .responseJSON { response in switch response.result {
             case .Success(let JSON):
-    
                 let response = JSON as! NSDictionary
                 self.searchResult = response["value"] as! NSArray
+                self.favoriteResult = response["favorite"] as! NSArray
                 self.setUpResults()
                 self.resultTable.reloadData()
                 
@@ -36,11 +37,9 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, UITab
                 print("Request failed with error: \(error)")
                 }
         }
-        
         self.resultTable.backgroundView = UIImageView(image: UIImage(named: "background_img"))
         self.resultTable.tableFooterView = UIView()
     }
-    
     
     //set cell number
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,8 +63,14 @@ class SearchResultViewController: UIViewController, UITableViewDataSource, UITab
         if segue.identifier == "detailedResultSegue" {
             if let destination = segue.destinationViewController as? DetailedResultViewController {
                 destination.detailedResult = detailedResult
+                for favorite_id in favoriteResult{
+                    if(favorite_id as! String == detailedResult["id"] as! String){
+                        print("yes")
+                        destination.favorited = 1
+                        break
+                    }
+                }
             }
-
         }
     }
     func setUpResults(){
